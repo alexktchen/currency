@@ -1,6 +1,6 @@
-package com.example.currency;
+package com.example.currency.controller;
 
-import com.example.currency.controller.CoindeskController;
+import com.example.currency.CurrencyApplication;
 import com.example.currency.dto.CoinDeskTransferDto;
 import com.example.currency.dto.HttpResponseEntity;
 import com.example.currency.entity.CoinDeskEntity;
@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -29,7 +30,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = CurrencyApplication.class)
+@SpringBootTest(
+    classes = CurrencyApplication.class)
+@AutoConfigureMockMvc
 public class CoindeskControllerTest {
 
 
@@ -63,7 +66,7 @@ public class CoindeskControllerTest {
     }
 
     @Test
-    public void testGetCoinDeskAPI() throws Exception {
+    public void testGetCoinDesk() throws Exception {
         Mockito.when(transferService.getCoinDeskItems()).thenReturn(HttpResponseEntity.ok(coinDeskEntity));
 
         mockMvc.perform(get("/coindesk")

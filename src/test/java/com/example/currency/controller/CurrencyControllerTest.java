@@ -1,6 +1,6 @@
-package com.example.currency;
+package com.example.currency.controller;
 
-import com.example.currency.controller.CurrencyController;
+import com.example.currency.CurrencyApplication;
 import com.example.currency.entity.Currency;
 import com.example.currency.service.CurrencyService;
 import com.fasterxml.jackson.databind.ObjectMapper;
